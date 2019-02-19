@@ -5,11 +5,13 @@
 
 .mat-list-item,
 .mat-button,
-.mat-table {
-    font-family: Samim;
+.mat-table
+.mat-simple-snackbar
+.persian {
+    font-family: Samim !important;
 }
 
-.mat-toolbar{
+.mat-toolbar {
     /* font: 500 20px/32px Roboto,"Helvetica Neue",sans-serif, Samim; */
     font-style: normal;
     font-variant-ligatures: normal;

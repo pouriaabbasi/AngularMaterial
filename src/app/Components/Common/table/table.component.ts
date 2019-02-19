@@ -69,10 +69,12 @@ export class TableComponent implements OnInit, OnChanges {
 
     if (headerAction.mustSelect) {
       if (!this.selection.selected.length) {
-        this.snakBar.open('Select a row first!', null, {
-          duration: 2500,
+        this.snakBar.open('ابتدا یک ردیف از جدول را انتخاب کنید', null, {
+          duration: 250000,
           horizontalPosition: 'center',
-          verticalPosition: 'top'
+          verticalPosition: 'top',
+          direction: 'rtl',
+          panelClass: 'persian'
         });
         return;
       }
