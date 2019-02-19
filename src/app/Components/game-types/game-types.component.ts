@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { TableActionModel } from 'src/app/Model/Common/table-action.model';
-import { GameTypeModel } from 'src/app/Model/GameType/game.type.model';
-import { TableColumnModel } from 'src/app/Model/Common/table-column.model';
+import { TableActionModel } from 'src/app/Models/Common/table-action.model';
+import { GameTypeModel } from 'src/app/Models/GameType/game.type.model';
+import { TableColumnModel } from 'src/app/Models/Common/table-column.model';
 
 @Component({
   selector: 'app-game-types',
@@ -11,14 +11,15 @@ import { TableColumnModel } from 'src/app/Model/Common/table-column.model';
 export class GameTypesComponent implements OnInit {
 
   actions: TableActionModel[] = [
-    { name: "Add", icon: "add_circle", action: new EventEmitter() },
-    { name: "Edit", icon: "create", action: new EventEmitter<GameTypeModel>(), mustSelect: true },
-    { name: "Delete", icon: "remove_circle", action: new EventEmitter<GameTypeModel>(), mustSelect: true, mustConfirm: true }
-  ]
+    { name: 'جدید', icon: 'add_circle', action: new EventEmitter() },
+    { name: 'ویرایش', icon: 'create', action: new EventEmitter<GameTypeModel>(), mustSelect: true },
+    { name: 'حذف', icon: 'remove_circle', action: new EventEmitter<GameTypeModel>(), mustSelect: true, mustConfirm: true }
+  ];
+
   columns: TableColumnModel[] = [
-    { caption: "Name", dataMember: "name" },
-    { caption: "Description", dataMember: "description" }
-  ]
+    { caption: 'نام بازی', dataMember: 'name' },
+    { caption: 'توضیحات', dataMember: 'description' }
+  ];
   gameTypes: GameTypeModel[] = [];
 
   constructor() { }
@@ -32,7 +33,7 @@ export class GameTypesComponent implements OnInit {
       { id: 1, name: 'Snooker', description: 'Snooker Game!' },
       { id: 2, name: '8 Ball', description: '8 Ball Game!' },
       { id: 3, name: '9 Ball', description: '9 Ball Game!' },
-    ]
+    ];
   }
 
 }

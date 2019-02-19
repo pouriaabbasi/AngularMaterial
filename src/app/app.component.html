@@ -6,26 +6,26 @@
     <h1 class="example-app-name">League Manager</h1>
   </mat-toolbar>
 
-  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+  <mat-sidenav-container dir="rtl" class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
       <mat-nav-list>
         <a class="sidenavelement" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}" routerLink="/"
           mat-list-item href="#">
-          <mat-icon>dashboard</mat-icon> &nbsp; Dashboard
+          <mat-icon>dashboard</mat-icon> &nbsp; داشبورد
         </a>
-        <hr>
+        <mat-divider></mat-divider>
         <a class="sidenavelement" routerLinkActive="active-link" routerLink="/game-types" mat-list-item href="#">
-          <mat-icon>games</mat-icon> &nbsp; Game Types
+          <mat-icon>games</mat-icon> &nbsp; انواع بازی
         </a>
         <a class="sidenavelement" routerLinkActive="active-link" routerLink="/players" mat-list-item href="#">
-          <mat-icon>people</mat-icon> &nbsp; Players
+          <mat-icon>people</mat-icon> &nbsp; بازیکنان
         </a>
         <a class="sidenavelement" routerLinkActive="active-link" routerLink="/league-types" mat-list-item href="#">
-          <mat-icon>dns</mat-icon> &nbsp; League Types
+          <mat-icon>dns</mat-icon> &nbsp; انواع لیگ
         </a>
         <a class="sidenavelement" routerLinkActive="active-link" routerLink="/leagues" mat-list-item href="#">
-          <mat-icon>table_chart</mat-icon> &nbsp; Leagues
+          <mat-icon>table_chart</mat-icon> &nbsp; لیگ ها
         </a>
       </mat-nav-list>
     </mat-sidenav>

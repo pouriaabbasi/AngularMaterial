@@ -1,16 +1,16 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { MatTableDataSource, MatSnackBar, MatDialog } from '@angular/material';
-import { TableActionModel } from 'src/app/Model/Common/table-action.model';
-import { TableColumnModel } from 'src/app/Model/Common/table-column.model';
 import { SelectionModel } from '@angular/cdk/collections';
 import { BehaviorSubject } from 'rxjs';
+import { TableActionModel } from 'src/app/Models/Common/table-action.model';
+import { TableColumnModel } from 'src/app/Models/Common/table-column.model';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnChanges {
 
   @Input() title: string;
   @Input() actions: TableActionModel[];
@@ -23,22 +23,25 @@ export class TableComponent implements OnInit {
     return this._data.getValue();
   }
 
+  // tslint:disable-next-line:variable-name
   private _data = new BehaviorSubject<any>([]);
+  // tslint:disable-next-line:variable-name
   private _displayedColumns: string[];
   get displayedColumns(): string[] {
-    if (this._displayedColumns)
+    if (this._displayedColumns) {
       return this._displayedColumns;
+    }
     this._displayedColumns = [];
-    this._displayedColumns.push("select");
+    this._displayedColumns.push('select');
     this.columns.forEach(column => {
       this._displayedColumns.push(column.dataMember);
     });
   }
-  private dataSource = new MatTableDataSource(this.data);
-  private selection = new SelectionModel<any>(false, []);
+  dataSource = new MatTableDataSource(this.data);
+  selection = new SelectionModel<any>(false, []);
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['data']) {
+    if (changes.data) {
       this.dataSource = new MatTableDataSource(this.data);
     }
   }
@@ -51,7 +54,7 @@ export class TableComponent implements OnInit {
   ngOnInit() {
     this._data.subscribe(x => {
       this.dataSource = new MatTableDataSource(this.data);
-    })
+    });
   }
 
   private getValue(element: any, dataMember: string) {
@@ -59,20 +62,21 @@ export class TableComponent implements OnInit {
   }
 
   private doAction(actionName: string) {
-    var headerAction = this.actions.find(x => x.name == actionName);
-    if (!headerAction || !headerAction.action)
+    const headerAction = this.actions.find(x => x.name === actionName);
+    if (!headerAction || !headerAction.action) {
       return;
+    }
 
-    if (headerAction.mustSelect)
+    if (headerAction.mustSelect) {
       if (!this.selection.selected.length) {
-        this.snakBar.open("Select a row first!", null, {
+        this.snakBar.open('Select a row first!', null, {
           duration: 2500,
-          horizontalPosition: "center",
-          verticalPosition: "top",
-          announcementMessage: "Test"
-        })
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
         return;
       }
+    }
 
     // if (headerAction.mustConfirm) {
     //   this.dialog.open(ConfirmComponent, {

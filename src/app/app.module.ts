@@ -41,12 +41,12 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './Pages/dashboard/dashboard.component';
-import { GameTypesComponent } from './Pages/game-types/game-types.component';
-import { PlayersComponent } from './Pages/players/players.component';
-import { LeagueTypesComponent } from './Pages/league-types/league-types.component';
-import { LeaguesComponent } from './Pages/leagues/leagues.component';
-import { TableComponent } from './Common/table/table.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { GameTypesComponent } from './Components/game-types/game-types.component';
+import { PlayersComponent } from './Components/players/players.component';
+import { LeagueTypesComponent } from './Components/league-types/league-types.component';
+import { LeaguesComponent } from './Components/leagues/leagues.component';
+import { TableComponent } from './Components/Common/table/table.component';
 
 @NgModule({
   declarations: [
