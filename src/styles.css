@@ -5,10 +5,15 @@
 
 .mat-list-item,
 .mat-button,
-.mat-table
-.mat-simple-snackbar
-.persian {
+.mat-table,
+.mat-form-field {
     font-family: Samim !important;
+}
+
+.persian > .mat-simple-snackbar {
+    font-family: Samim !important;
+    justify-content: center;
+    color: white;
 }
 
 .mat-toolbar {

@@ -4,6 +4,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { BehaviorSubject } from 'rxjs';
 import { TableActionModel } from 'src/app/Models/Common/table-action.model';
 import { TableColumnModel } from 'src/app/Models/Common/table-column.model';
+import { NotificationService } from 'src/app/Services/Common/notification.service';
 
 @Component({
   selector: 'app-table',
@@ -47,8 +48,7 @@ export class TableComponent implements OnInit, OnChanges {
   }
 
   constructor(
-    private snakBar: MatSnackBar,
-    private dialog: MatDialog
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -69,13 +69,8 @@ export class TableComponent implements OnInit, OnChanges {
 
     if (headerAction.mustSelect) {
       if (!this.selection.selected.length) {
-        this.snakBar.open('ابتدا یک ردیف از جدول را انتخاب کنید', null, {
-          duration: 250000,
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-          direction: 'rtl',
-          panelClass: 'persian'
-        });
+        this.notificationService.ShowInfo(
+          "ابتدا یک ردیف از جدول را انتخاب نمایید");
         return;
       }
     }

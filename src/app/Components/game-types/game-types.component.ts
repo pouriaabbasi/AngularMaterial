@@ -30,7 +30,7 @@ export class GameTypesComponent implements OnInit {
 
   private fetchGameTypes(): void {
     this.gameTypes = [
-      { id: 1, name: 'Snooker', description: 'Snooker Game!' },
+      { id: 1, name: 'اسنوکر', description: 'بازی اسنوکر' },
       { id: 2, name: '8 Ball', description: '8 Ball Game!' },
       { id: 3, name: '9 Ball', description: '9 Ball Game!' },
     ];

@@ -47,6 +47,7 @@ import { PlayersComponent } from './Components/players/players.component';
 import { LeagueTypesComponent } from './Components/league-types/league-types.component';
 import { LeaguesComponent } from './Components/leagues/leagues.component';
 import { TableComponent } from './Components/Common/table/table.component';
+import { NotificationComponent } from './Components/Common/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { TableComponent } from './Components/Common/table/table.component';
     PlayersComponent,
     LeagueTypesComponent,
     LeaguesComponent,
-    TableComponent
+    TableComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -99,6 +101,7 @@ import { TableComponent } from './Components/Common/table/table.component';
     MatTreeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NotificationComponent]
 })
 export class AppModule { }

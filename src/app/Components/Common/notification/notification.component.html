@@ -1,0 +1,15 @@
+<div class="{{data.type}}">
+  <mat-grid-list cols="5">
+    <mat-grid-tile colspan="4" rowspan="1">
+      <p>{{data.message}}</p>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1" *ngIf="data.icon">
+      <mat-icon>{{data.icon}}</mat-icon>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="5" *ngIf="data.actions">
+      <button *ngFor="let action of data.actions" class="white-text" mat-button (click)="doAction(action.name)">
+        <mat-icon left>{{action.icon}}</mat-icon> {{action.caption}}
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
