@@ -31,3 +31,8 @@
     font-family: Samim;
     margin: 0;
 }
+
+.mat-toolbar h1{
+    font: 500 20px/32px Roboto,"Helvetica Neue",sans-serif,Samim;
+    margin: 0;
+}

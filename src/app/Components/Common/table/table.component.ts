@@ -5,6 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 import { TableActionModel } from 'src/app/Models/Common/table-action.model';
 import { TableColumnModel } from 'src/app/Models/Common/table-column.model';
 import { NotificationService } from 'src/app/Services/Common/notification.service';
+import { DialogService } from 'src/app/Services/Common/dialog.service';
+import { ResultTypeKind } from 'src/app/Models/Common/result-type.kind';
 
 @Component({
   selector: 'app-table',
@@ -48,7 +50,8 @@ export class TableComponent implements OnInit, OnChanges {
   }
 
   constructor(
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private dialogService: DialogService
   ) { }
 
   ngOnInit() {
@@ -75,16 +78,14 @@ export class TableComponent implements OnInit, OnChanges {
       }
     }
 
-    // if (headerAction.mustConfirm) {
-    //   this.dialog.open(ConfirmComponent, {
-    //     disableClose: true,
-    //   }).afterClosed().subscribe(result => {
-    //     if (result)
-    //       headerAction.action.next(headerAction.mustSelect ? this.selection.selected[0] : null);
-    //   })
-    // }
-    // else
-    headerAction.action.next(headerAction.mustSelect ? this.selection.selected[0] : null);
+    if (headerAction.mustConfirm) {
+      this.dialogService.OpenConfirmDialog().subscribe(result => {
+        if (result.result === ResultTypeKind.Yes)
+          headerAction.action.next(headerAction.mustSelect ? this.selection.selected[0] : null);
+      })
+    }
+    else
+      headerAction.action.next(headerAction.mustSelect ? this.selection.selected[0] : null);
   }
 
   private applyFilter(filterValue: string) {

@@ -48,6 +48,7 @@ import { LeagueTypesComponent } from './Components/league-types/league-types.com
 import { LeaguesComponent } from './Components/leagues/leagues.component';
 import { TableComponent } from './Components/Common/table/table.component';
 import { NotificationComponent } from './Components/Common/notification/notification.component';
+import { ConfirmDialogComponent } from './Components/Common/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { NotificationComponent } from './Components/Common/notification/notifica
     LeagueTypesComponent,
     LeaguesComponent,
     TableComponent,
-    NotificationComponent
+    NotificationComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -102,6 +104,9 @@ import { NotificationComponent } from './Components/Common/notification/notifica
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [NotificationComponent]
+  entryComponents: [
+    NotificationComponent,
+    ConfirmDialogComponent
+  ]
 })
 export class AppModule { }

@@ -26,6 +26,17 @@ export class GameTypesComponent implements OnInit {
 
   ngOnInit() {
     this.fetchGameTypes();
+
+    this.actions[0].action.subscribe(() => {
+      this.newGameType();
+    });
+
+    this.actions[1].action.subscribe(gameType => {
+      this.editGameType(gameType);
+    });
+    this.actions[2].action.subscribe(gameType => {
+      this.deleteGameType(gameType);
+    });
   }
 
   private fetchGameTypes(): void {
@@ -34,6 +45,15 @@ export class GameTypesComponent implements OnInit {
       { id: 2, name: '8 Ball', description: '8 Ball Game!' },
       { id: 3, name: '9 Ball', description: '9 Ball Game!' },
     ];
+  }
+
+  private newGameType(): void {
+  }
+
+  private editGameType(gameType: GameTypeModel): void {
+  }
+
+  private deleteGameType(gameType: GameTypeModel): void {
   }
 
 }
