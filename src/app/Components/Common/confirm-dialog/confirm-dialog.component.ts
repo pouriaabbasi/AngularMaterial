@@ -18,11 +18,11 @@ export class ConfirmDialogComponent implements OnInit {
   ngOnInit() {
   }
 
-  public Yes() {
+  public yes() {
     this.dialogRef.close({ result: ResultTypeKind.Yes });
   }
 
-  public No() {
+  public no() {
     this.dialogRef.close({ result: ResultTypeKind.No });
   }
 
