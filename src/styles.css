@@ -10,7 +10,7 @@
     font-family: Samim !important;
 }
 
-.persian > .mat-simple-snackbar {
+.persian>.mat-simple-snackbar {
     font-family: Samim !important;
     justify-content: center;
     color: white;
@@ -32,7 +32,7 @@
     margin: 0;
 }
 
-.mat-toolbar h1{
-    font: 500 20px/32px Roboto,"Helvetica Neue",sans-serif,Samim;
+.mat-toolbar h1 {
+    font: 500 20px/32px Samim, Roboto, "Helvetica Neue", sans-serif;
     margin: 0;
 }
