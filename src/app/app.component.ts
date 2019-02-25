@@ -1,6 +1,7 @@
 import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import 'hammerjs';
 import { MediaMatcher } from '@angular/cdk/layout';
+import * as moment from 'jalali-moment';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ export class AppComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
   // tslint:disable-next-line:variable-name
   private _mobileQueryListener: () => void;
+
+  dateObject = moment('1397-12-06', 'jYYYY,jMM,jDD');
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');

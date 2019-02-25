@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -49,6 +50,7 @@ import { LeaguesComponent } from './Components/leagues/leagues.component';
 import { TableComponent } from './Components/Common/table/table.component';
 import { NotificationComponent } from './Components/Common/notification/notification.component';
 import { ConfirmDialogComponent } from './Components/Common/confirm-dialog/confirm-dialog.component';
+import { DpDatePickerModule } from 'ng2-jalali-date-picker';
 
 @NgModule({
   declarations: [
@@ -101,6 +103,8 @@ import { ConfirmDialogComponent } from './Components/Common/confirm-dialog/confi
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    DpDatePickerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
