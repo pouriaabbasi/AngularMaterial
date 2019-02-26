@@ -1,7 +1,10 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { TableActionModel } from 'src/app/Models/Common/table-action.model';
-import { GameTypeModel } from 'src/app/Models/GameType/game.type.model';
+import { GameTypeModel } from 'src/app/Models/GameType/game-type.model';
 import { TableColumnModel } from 'src/app/Models/Common/table-column.model';
+import { GameTypeService } from 'src/app/Services/game-type.service';
+import { MatDialog } from '@angular/material';
+import { GameTypeModalComponent } from './game-type-modal/game-type-modal.component';
 
 @Component({
   selector: 'app-game-types',
@@ -22,7 +25,10 @@ export class GameTypesComponent implements OnInit {
   ];
   gameTypes: GameTypeModel[] = [];
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+    private gameTypeService: GameTypeService,
+  ) { }
 
   ngOnInit() {
     this.fetchGameTypes();
@@ -40,14 +46,18 @@ export class GameTypesComponent implements OnInit {
   }
 
   private fetchGameTypes(): void {
-    this.gameTypes = [
-      { id: 1, name: 'اسنوکر', description: 'بازی اسنوکر' },
-      { id: 2, name: '8 Ball', description: '8 Ball Game!' },
-      { id: 3, name: '9 Ball', description: '9 Ball Game!' },
-    ];
+    this.gameTypeService.GetGameTypes().subscribe(gameTypes => {
+      this.gameTypes = gameTypes;
+    })
   }
 
   private newGameType(): void {
+    this.dialog.open(GameTypeModalComponent, {
+      data: new GameTypeModel()
+    }).afterClosed().subscribe(result => {
+      if (result)
+        this.gameTypes.push(result);
+    })
   }
 
   private editGameType(gameType: GameTypeModel): void {

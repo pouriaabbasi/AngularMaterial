@@ -51,6 +51,7 @@ import { TableComponent } from './Components/Common/table/table.component';
 import { NotificationComponent } from './Components/Common/notification/notification.component';
 import { ConfirmDialogComponent } from './Components/Common/confirm-dialog/confirm-dialog.component';
 import { DpDatePickerModule } from 'ng2-jalali-date-picker';
+import { GameTypeModalComponent } from './Components/game-types/game-type-modal/game-type-modal.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { DpDatePickerModule } from 'ng2-jalali-date-picker';
     LeaguesComponent,
     TableComponent,
     NotificationComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    GameTypeModalComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +112,8 @@ import { DpDatePickerModule } from 'ng2-jalali-date-picker';
   bootstrap: [AppComponent],
   entryComponents: [
     NotificationComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    GameTypeModalComponent
   ]
 })
 export class AppModule { }
