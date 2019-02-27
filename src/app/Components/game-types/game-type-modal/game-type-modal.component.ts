@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { GameTypeModel } from 'src/app/Models/GameType/game-type.model';
 import { GameTypeService } from 'src/app/Services/game-type.service';
 import { GameTypeAddModel } from 'src/app/Models/GameType/game-type-add.model';
+import { GameTypeEditModel } from 'src/app/Models/GameType/game-type-edit.model';
 
 @Component({
   selector: 'app-game-type-modal',
@@ -21,13 +22,24 @@ export class GameTypeModalComponent implements OnInit {
   }
 
   public submitData(): void {
-    var addGameTypeModel: GameTypeAddModel = {
-      name: this.data.name,
-      description: this.data.description
-    };
-    this.gameTypeService.AddGameType(addGameTypeModel).subscribe(gameType => {
-      this.dialogRef.close(gameType);
-    })
+    if (!this.data.id) {
+      const addModel: GameTypeAddModel = {
+        name: this.data.name,
+        description: this.data.description
+      };
+      this.gameTypeService.AddGameType(addModel).subscribe(gameType => {
+        this.dialogRef.close(gameType);
+      });
+    } else {
+      const editModel: GameTypeEditModel = {
+        id: this.data.id,
+        name: this.data.name,
+        description: this.data.description
+      };
+      this.gameTypeService.EditGameType(editModel).subscribe(gameType => {
+        this.dialogRef.close(gameType);
+      });
+    }
   }
 
   public cancel(): void {

@@ -44,6 +44,7 @@ export class TableComponent implements OnInit, OnChanges {
   selection = new SelectionModel<any>(false, []);
 
   ngOnChanges(changes: SimpleChanges) {
+    debugger;
     if (changes.data) {
       this.dataSource = new MatTableDataSource(this.data);
     }

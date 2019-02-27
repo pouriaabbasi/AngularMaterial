@@ -47,23 +47,40 @@ export class GameTypesComponent implements OnInit {
 
   private fetchGameTypes(): void {
     this.gameTypeService.GetGameTypes().subscribe(gameTypes => {
-      this.gameTypes = gameTypes;
-    })
+      this.gameTypes = gameTypes.slice();
+    });
   }
 
   private newGameType(): void {
     this.dialog.open(GameTypeModalComponent, {
       data: new GameTypeModel()
     }).afterClosed().subscribe(result => {
-      if (result)
-        this.gameTypes.push(result);
-    })
+      if (result) {
+        this.fetchGameTypes();
+        // this.gameTypes.push(result);
+        // this.gameTypes = this.gameTypes.slice();
+      }
+    });
   }
 
   private editGameType(gameType: GameTypeModel): void {
+    this.dialog.open(GameTypeModalComponent, {
+      data: gameType
+    }).afterClosed().subscribe(result => {
+      if (result) {
+        this.fetchGameTypes();
+        // this.gameTypes.push(result);
+        // this.gameTypes = this.gameTypes.slice();
+      }
+    });
   }
 
   private deleteGameType(gameType: GameTypeModel): void {
+    this.gameTypeService.DeleteGameType(gameType.id).subscribe(result => {
+      if (result) {
+        this.fetchGameTypes();
+      }
+    });
   }
 
 }
